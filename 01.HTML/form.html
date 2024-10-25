@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form 태그와 관련 태그 사용해보기</title>
+</head>
+
+<body>
+    <form>
+        text <input type="text" />
+        <br />
+        <label for="emailID">email</label>
+        <!-- email 글자 누르면 커서가 네모칸에 -->
+        <input type= "email" id="emailID" placeholder="example@naver.com">
+        <br />
+        <label>
+        <!-- 위랑 같은 역할 -->
+            password <input type="password" placeholder="영문, 숫자 조합 8자리 이상">
+        <br />
+        <input type="color" />
+        <input type="range" />
+        <input type="date" />
+        <input type="file" />
+        <input type="number" />
+
+        <br />
+        <input type="button" value="버튼">
+        <input type="submit" value="버튼">
+        <button>버튼</button>
+        <button type="button">버튼</button>
+        <br />
+        <br />
+        <h5>다음 중 input type이 아닌 것은?(모두 고르시오)</h5>
+        <input type="checkbox" name="input" disabled> text
+        <input type="checkbox" name="input"> click
+        <input type="checkbox" name="input"> img
+        <input type="checkbox" name="input"> date
+        <input type="checkbox" name="input"> bread
+        <br />
+        <br />
+        <h5>다음 중 img 태그의 속성인 것은?</h5>
+        <label>
+            <input type="radio" name="img"> title
+        </label>
+        <label>
+            <input type="radio" name="img"> value
+        </label>
+        <label>
+            <input type="radio" name="img"checked> mouse
+        </label>
+        <input type="radio" name="img" id="alt" /> 
+        <label for="alt">alt</label>
+        <input type="radio" name="img" id="type"> 
+        <label for="type">type</label>
+
+        <br />
+        <br />
+        <!-- select -->
+         <select name="flower">
+            <option value="장미">장미</option>
+            <option value="동백꽃">동백꽃</option>
+            <optgroup label="흰꽃">
+            <option value="매화">매화</option>
+            <option value="목련">목련</option>
+            </optgroup>
+         </select>
+
+         <br />
+         <textarea cols="30" rows="10" placeholder="하고싶은 말을 적어주세요"></textarea>
+
+    </form>
+</body>
+
+</html>
