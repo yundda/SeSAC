@@ -1,0 +1,13 @@
+/* body{background-color: orange;} */
+.box{width: auto; height: 200px; background-color: orange;}
+.box span{
+    margin-right: 30px;
+    display: inline-block;
+    width: 200px;
+    height: 100px;}
+.html{
+    background: skyblue;}
+.css{
+    background: green;}
+.java{
+    background: red;}
