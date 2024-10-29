@@ -15,9 +15,18 @@
       textarea {
         width: 100%;
       }
-      textarea:focus{background-color: pink;}
+      textarea:focus{background-color: rgb(253, 221, 226);}
 
       /* checked */
+      input:checked+label{
+        color: white;
+        font-weight: bold;}
+
+      #red:checked+label{background-color: red;}
+      #blue:checked+label{background-color: blue;}
+      #yellow:checked+label{background-color: yellow;
+      color: black;}
+
       /* active */
       button {
         float: right;
@@ -37,9 +46,6 @@
         border-radius: 10px;
         border: none;
       }
-      
-     
-
     </style>
   </head>
   <body>
@@ -50,12 +56,13 @@
         - 암시적 방식: label 내부에 input 쓰기 
             - checkbox 사용 시 명시적 방식으로 진행하기	
       -->
-        <textarea cols="30" rows="10" placeholder="건의 사항"></textarea>
-        <input type="checkbox" name="color">빨강
-        <input type="checkbox" name="color">파랑
-        <input type="checkbox" name="color">노랑
-
       <!-- checkbox와 textarea 만들기 -->
+        <textarea cols="30" rows="10" placeholder="건의 사항 🎈"></textarea>
+        <input type="checkbox" id="red"><label for="red">빨강</label>
+        <input type="checkbox" id="blue"><label for="blue">파랑</label>
+        <input type="checkbox" id="yellow"><label for="yellow">노랑</label>
+
+
       <button>제출</button>
     </form>
   </body>
