@@ -1,0 +1,25 @@
+.circle{
+    position: relative;
+    top: 100px;
+    left: 100px;
+    width: 300px;
+    height: 300px;
+    background: linear-gradient(to right top, #FFE600, #FF0080, #DB20DB );
+    border-radius: 100%;
+}
+
+.circle > .img{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    border: 5px solid white;
+    border-radius: 100%;
+    background-color: bisque;
+    background-image: url(/github/SeSAC/02.CSS/img/26139_img.png);
+    background-position: center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 270px;
+    height: 270px;
+    z-index: 2
+}

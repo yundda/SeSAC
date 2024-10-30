@@ -1,0 +1,81 @@
+.bug{
+    position: relative;
+    width: 500px;
+    height: 400px;
+    top: 50px;
+    left: 50px;
+}
+
+.grass{
+    width: 500px;
+    position: absolute;
+    bottom: 0;
+    z-index: 5;
+}
+
+/* background로 적용하는 경우 */
+/* .grass{
+    position: relative;
+    width: 500px;
+    height: 400px;
+    background-image: url(/github/SeSAC/02.CSS/img/grass.png);
+    background-repeat: no-repeat;
+    background-position: bottom;
+    z-index: 5;
+} */
+
+.circle{
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    border-radius: 100%;
+    z-index: 1;
+}
+.circle1{
+    background-color: rgb(172, 172, 21);
+    top: 100px;
+    left: 100px;
+
+}
+.circle1 > .incircle1{
+    position: absolute;
+    background-color: white;
+    width: 40px;
+    height: 40px;
+    top: 20px;
+    left: 15px;
+}
+
+.incircle2{
+    position: absolute;
+    background-color: black;
+    width: 25px;
+    height: 25px;
+    top: 7.5px;
+    left: 0;
+}
+
+.circle2{
+    background-color: rgb(188, 188, 42);
+    top: 150px;
+    left: 150px;
+
+}
+.circle3{
+    background-color: rgb(218, 218, 89);
+    top: 200px;
+    left: 200px;
+
+}
+.circle4{
+    background-color: rgb(240, 240, 125);
+    top: 250px;
+    left: 250px;
+
+}
+.circle5{
+    background-color: rgb(244, 244, 152);
+    top: 300px;
+    left: 300px;
+    z-index: 10;
+}
