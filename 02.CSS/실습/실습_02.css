@@ -1,0 +1,27 @@
+.border{
+    border: 2px solid red;
+    background-color: pink;
+    margin: 10px;
+    height: 150px;
+    border-radius: 10px 20px 30px 40px;
+}
+.border-width{
+    border-width: 10px;
+}
+.border-style{
+    border-style: dashed;
+}
+.border-color{
+    border-color: yellow;
+}
+.border-position{
+    border-style: dashed dotted solid hidden;
+}
+
+.disapear{
+    width: 200px;
+    height: 200px;
+    background-color: blue;
+    color: white;
+}
+.disapear:hover{opacity: 0;}

@@ -40,3 +40,146 @@
     margin: 10px;
 
 }
+
+/* 부모를 기본적으로 따라가지만 max(~이하), min(~이상)이 지정된다면 그 이상, 이하로 불가 */
+.parent{
+    width: 500px;
+    height: 250px;
+    background-color: red;
+}
+
+.parent > .min{
+    min-width: 400px;
+    background-color: orange;
+    height: 100px;
+}
+
+.parent > .max{
+    max-width: 400px;
+    height: 100px;
+    background-color: violet;
+}
+
+/* 단위 확인 */
+.box{
+    background-color: beige;
+    border: 1px solid black;
+
+}
+.box-px{
+    width: 50px;
+    height: 50px;
+
+}
+.box-view{
+    /* 뷰포트(브라우저 크기)에 상대적임!  */
+    width: 50vw;
+    height: 50vh;
+
+}
+.box-per{
+    /* 부모가 기준임
+    (기본적으로 content에 따라 height가 바뀜
+     디폴트는 height가 0이기 때문에 퍼센트를 줘도 바뀌지 않음 !
+     이 경우 바꾸고 싶다면 부모인 body의 height가 정해져있어야 가능 */
+    width: 50%;
+    height: 50%;
+}
+
+html{
+    /* 기본이 16px */
+    font-size: 20px;
+}
+
+.rem{
+/* html의 폰트 사이즈가 1rem */
+    font-size: 2rem;
+}
+
+.em{
+/* 부모의 폰트 사이즈가 1em */
+    font-size: 2em;
+}
+
+.square{
+    width: 100px;
+    height: 100px;
+    border: 1px solid gray;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.border{
+    /* 단축속성 - width style color 순으로 작성 */
+    border: 1px solid black;
+    border-color: blue;
+    border-style: dotted;
+    border-width: 5px;
+
+    border-left: 2px dashed yellowgreen;
+    border-top-style: solid;
+}
+
+.rounded{
+    border-radius: 10%;
+    border-radius: 5px 10px 20px 40px;
+    border-radius: 5px 20px 50px;
+    border-radius: 5px 50px;
+}
+
+.box-sizing{
+    border: 15px solid red;
+    padding: 20px;
+    background-color: yellow;
+
+}
+
+.content-box{
+box-sizing: content-box;
+}
+
+.border-box{
+box-sizing: border-box;
+}
+
+.d-none {
+    /* 속성, 자리 x */
+    display: none;
+    background-color: red;
+  }
+  .invisible {
+    /* 속성 x 자리 o 커서로 알 수 있음(위에서 .square 속성 참고) */
+    visibility: hidden;
+    background-color: orangered;
+  }
+  
+  .opacity-0 {
+    /* 속성, 자리 o */
+    opacity: 0;
+    background-color: tomato;
+  }
+
+  .square > img[alt='푸사진']{
+    width: 200px;
+  }
+  
+  .overflow-hidden{
+    overflow: hidden;
+  }
+
+  .overflow-auto{
+    /* 넘쳐야 스크롤이 생김 안 넘치면 x */
+    overflow: auto;
+  }
+
+  .overflow-scroll{
+    overflow: scroll;
+  }
+  .overflow-visible{
+    overflow: visible;
+    /* overflow-x: hidden;
+    overflow-y: auto; 
+    하단과 동일(단축속성)
+    */
+    overflow: hidden auto;
+  }
