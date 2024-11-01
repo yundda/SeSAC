@@ -1,6 +1,6 @@
 .container{
     max-width: 1000px;
-    height: 400px;
+    height: 700px;
     margin: 0 auto;
     background-color: #333;
 
@@ -35,11 +35,63 @@
     /* flex-wrap: wrap; */
 
     /* 페이지 검사 > 주석 체크 on/off로 확인해보기 */
+
+    /* 3. justify-content - 주축의 정렬 방법
+    flex-direction 이 row일 때는 주축이 가로 > 수평 정렬
+    flex-direction 이 coloum일 때는 주축이 세로 > 수직 정렬
+    - flex-start(default) : 아이템을 start 지점 기준으로 나열
+    - flex-end : 끝 지점 기준으로 나열
+    - center : 중앙 정렬
+    - space-between : 처음과 마지막 아이템이 컨테이너의 양 끝으로 이동, 나머지 영역을 균등하게 나눔
+    - space-around : 아이템들의 모든 여백을 균등하게 갖도록 함
+    - space-evenly : 양 끝 영역의 단위가 1이라면 나머지 영역의 단위는 2 => 1:2: ... :2:1
+    
+    */
+
+    /* justify-content: flex-start; */
+    /* justify-content: flex-end; */
+    /* justify-content: center; */
+    /* justify-content: space-between; */
+    /* justify-content: space-around; */
+    /* justify-content: space-evenly; */
+
+    /* 4. align-items - 교차축에 대한 정렬 방법
+    - stretch(default) : 컨테이너에 교차축 방향으로 길이를 늘림
+    - flex-start : 교차축 방향에 대해 시작줄 기준 content의 크기만큼 차지하면서 정렬
+    - flex-end : 교차축 방향에 대해 끝줄 기준 content의 크기만큼 차지하면서 정렬
+    */
+
+    /* align-items: stretch; */
+    /* align-items: flex-start; */
+    /* align-items: flex-end; */
+    /* align-items: center */
+
+    /* 5. align-content - 교차축에 대한 여러행 정렬
+    (조건) flex-wrap:wrap 상태 = 2줄 이상인 상태에 유효
+    - stretch
+    - flex-start
+    - flex-end
+    - center
+    - space-between
+    - space-around
+    - space-evenly 
+    */
+
+    /* align-content: flex-start; */
+    /* align-content: center; */
+    /* align-content: flex-end; */
+    /* align-content: space-between; */
+    /* align-content: space-around; */
+    /* align-content: space-evenly; */
+
+
+
 }
 
 .container > .item{
     width: 100px;
-    height: 100px;
+    /* align-items stretch 적용해보기 위해서 주석처리 */
+    /* height: 100px; */
     font-size: 2.5rem;
     font-weight: bold;
     text-align: center;

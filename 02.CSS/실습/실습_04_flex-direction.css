@@ -1,0 +1,35 @@
+.container,.container2{
+    width: 500px;
+    height: 500px;
+    background-color: skyblue;
+    display: flex;
+    /* flex-direction: row; */
+    /* flex-direction: row-reverse; */
+    /* flex-direction: column; */
+    /* flex-direction: column-reverse; */
+}
+.item{
+    width: 100px;
+    height: 100px;
+    background-color: dodgerblue;
+    border: 1px solid gray;
+}
+
+.container2{
+/* 컨테이너 안에 한 줄이 되도록 설정 -> 가로, 세로 수직 정렬하기 */
+flex-wrap: nowrap;
+flex-direction: row;
+flex-direction: column;
+/* 컨테이너 안에 두줄 설정 */
+flex-wrap: wrap;
+/* 아이템을 하나로 뭉쳐서 가로, 세로 수직 정렬 */
+/* align-content: flex-start; */
+flex-direction: row;
+/* flex-direction: column; */
+/* 아이템을 각각의 flex줄에 가로, 세로 수직 정렬 
+align-center가 우위에 있어서 위의 align-center를 주석 처리해야 함!!
+*/
+align-items: flex-start;
+flex-direction: column;
+
+}
