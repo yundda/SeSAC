@@ -1,0 +1,17 @@
+.text{
+    position: relative;
+    left: 0vw;
+    width: 100vw;
+    animation: textbox 3s linear 0s 1  ;
+}
+@keyframes textbox{
+    from{
+        left: 100vw;
+        width: 200vw
+    }
+    to{
+        left: 0vw;
+        width:100vw
+    }
+}
+
