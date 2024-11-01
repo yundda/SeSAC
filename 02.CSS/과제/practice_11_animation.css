@@ -1,0 +1,30 @@
+
+.circle{
+    position: relative;
+    top: 0;
+    left: 0;
+    width:100px;
+    height:100px;
+    background: linear-gradient(to right top, rgb(210, 234, 53),orange, rgb(160, 94, 1));
+    border-radius: 50%;
+    animation: circle 8s linear infinite ;
+}
+
+@keyframes circle{
+    0%{
+        top: 0vh;
+        left: 0vw;
+    }
+    25%{
+        top: 0vh;
+        left: calc(100vw - 100px);
+    }
+    50%{
+        top: calc(100vh - 100px);
+        left: calc(100vw - 100px);
+    }
+    75%{
+        top: calc(100vh - 100px);
+        left: 0vw;
+    }
+}
