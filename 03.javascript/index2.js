@@ -6,17 +6,21 @@
 //
 
 // 1. string
-let myName = "aliie"
-let email = '[alie@naver.com]'
+let myName = "allie"
+let email = '[allie@naver.com]'
 console.log(myName)
 console.log(email)
 
 // 문자와 변수를 동시에 써보기
-console.log('내 이름은', myName)
+console.log('내 이름은',myName)
 // let bbb = '내 이름은', myName
-let aaa = '내 이름은'+ myName+'이고, 이메일은'+email+'입니다.'
-let bbb = '내 이름은 ${myName}이고, 이메일은${email}입니다.'
-console.log('내 이름은'+myName)
+// 위에꺼 불가능. ',' x, '+' o
+let aaa = '내 이름은 '+ myName+'이고, 이메일은'+email+'입니다.'
+// 따옴표 말고 `로 묶어야 적용
+let bbb = `내 이름은 ${myName}이고, 이메일은${email}입니다.`
+console.log(aaa)
+console.log(bbb)
+console.log('내 이름은 '+myName)
 
 // 2. number
 let number=123
@@ -124,7 +128,7 @@ console.log(typeof true)
 console.log(typeof {}) // object
 console.log(typeof [true]) // object
 console.log(typeof null) // object
-console.log(typeof und) // object
+console.log(typeof und) // undefined
 console.log(typeof NaN) // number
 console.log(typeof function(){}) // function
 
