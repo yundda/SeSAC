@@ -41,6 +41,6 @@
 
     /*  4. background-attachment  */
     background-attachment: scroll;
-    background-size: fixed;
+    background-attachment: fixed;
 
 }
