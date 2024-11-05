@@ -75,7 +75,7 @@ if(userID === promptID){
 let a = 5
 // switch의 ()에는 조건이 아닌 '값'
 switch(a){
-    // case에는 값에 대하 경우가 들어감
+    // case에는 값에 대한 경우가 들어감
     case 3:
         console.log('a가 3입니다.')
         // break가 없으면 다음 break가 있을 때로 넘어가버림
