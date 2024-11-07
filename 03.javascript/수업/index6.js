@@ -167,13 +167,13 @@ let six=arr2.filter(function(el){
     return el.length === 6
 })
 console.log(arr2)
-console.log(six) // quakka, rabbit
+console.log(six) // quakka, rabbit > 만족하는 모든 것 배열로 반환
 
 console.log('-----find------')
 let six2 = arr2.find(function(word){
     return word.length === 6
 })
-console.log(six2) // quakka > 만족하는 거 하나만 반환
+console.log(six2) // quakka > 만족하는 거 하나만 값으로 반환
 
 console.log('------map------')
 let arr4 = [1,2,3,4,5]
