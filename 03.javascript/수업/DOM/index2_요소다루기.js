@@ -43,7 +43,7 @@ for(let el of list){
     // el.style.color='#fff'
     // el.style.backgroundColor='pink' // camelCase 표기법으로 작성해야 함! '-'가 안 통해요오
     // el.style.fontSize='1.3rem'
-    el.classList.add('friends') // html에서 style 태그 내부에 작성 해 둔 friends라는 클래스 내의 css를 불러오는 과정
+    el.classList.add('friends') // html에서 style 태그 내부에 작성 해 둔 friends클래스에 대한 css를 적용시키기 위함
 }
 
 h1.classList.add('add-h1')

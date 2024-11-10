@@ -141,7 +141,7 @@ todoForm.addEventListener('submit',function(e){
         alert('오늘의 할 일을 작성해주세요!')
     }
     todoInput.value='' // 'submit' 후에는 빈 창이 되도록
-    })
+})
     
     // // if(todoInput.value===''){
     // //     alert('내용을 입력해주세요')
