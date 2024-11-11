@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./practice_03_스케줄등록.css">
+
+    <!-- jQuery CDN 불러오기 -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <form>
+        <label for="date">날짜 :</label>
+        <input type="text" id="date">
+        <br>
+        <label for="content">내용 :</label>
+        <input type="text" id="content">
+        <br>
+        <button class="button">작성</button>
+    </form>
+    <h1>2024년 1월</h1>
+    <table id="table">
+        <tr>
+            <th>日</th>
+            <th>月</th>
+            <th>火</th>
+            <th>水</th>
+            <th>木</th>
+            <th>金</th>
+            <th>土</th>
+        </tr>
+        <tr>
+            <td class="td"></td>
+            <td class="td td1">1</td>
+            <td class="td td2">2</td>
+            <td class="td td3">3</td>
+            <td class="td td4">4</td>
+            <td class="td td5">5</td>
+            <td class="td td6">6</td>
+        </tr>
+        <tr>
+            <td class="td td7">7</td>
+            <td class="td td8">8</td>
+            <td class="td td9">9</td>
+            <td class="td td10">10</td>
+            <td class="td td11">11</td>
+            <td class="td td12">12</td>
+            <td class="td td13">13</td>
+        </tr>
+        <tr>
+            <td class="td td14">14</td>
+            <td class="td td15">15</td>
+            <td class="td td16">16</td>
+            <td class="td td17">17</td>
+            <td class="td td18">18</td>
+            <td class="td td19">19</td>
+            <td class="td td20">20</td>
+        </tr>
+        <tr>
+            <td class="td td21">21</td>
+            <td class="td td22">22</td>
+            <td class="td td23">23</td>
+            <td class="td td24">24</td>
+            <td class="td td25">25</td>
+            <td class="td td26">26</td>
+            <td class="td td27">27</td>
+        </tr>
+        <tr>
+            <td class="td td28">28</td>
+            <td class="td td29">29</td>
+            <td class="td td30">30</td>
+            <td class="td td31">31</td>
+            <td class="td"></td>
+            <td class="td"></td>
+            <td class="td"></td>
+        </tr>
+    </table>
+    <script>
+        for(let i=0; i<=31; i++){
+                $(`.td${i}`).click(function(){
+                    $('#date').val(i)
+                })
+        }
+        $('form').submit(function(e){
+            let date = $('#date').val()
+            e.preventDefault();
+            let content = $('#content').val()
+            $(`.td${date}`).append(`<p>${content}</p>`)
+            $('#date').val('')
+            $('#content').val('')
+        })
+    
+    
+    </script>
+</body>
+</html>

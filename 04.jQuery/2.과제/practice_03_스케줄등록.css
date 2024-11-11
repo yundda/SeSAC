@@ -1,0 +1,28 @@
+h1{
+    color: green;
+    width: 600px;
+    text-align: center;
+    margin: 100px;
+    margin-bottom: 0;
+}
+#table{
+    text-align:center;
+    width: 600px;
+    height: 600px;
+    margin: 100px;
+    margin-top: 10px;
+    border: 1px solid red;
+}
+
+th, .td{
+    width: calc(600px/7);
+    height: calc(600px/6);
+    font-size: 1.3rem;
+}
+#table tr>th:first-child, #table tr td:nth-child(1), .td1{
+    color: red;
+}
+#table tr>th:last-child, #table tr>td:nth-child(7){
+    color: blue;
+}
+
