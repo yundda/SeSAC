@@ -1,0 +1,35 @@
+*{
+    box-sizing: border-box;
+}
+h1{
+    color: rgb(111, 205, 111);
+    width: 500px;
+    text-align: center;
+    margin: 30px 10%;
+}
+#table{
+    width: 500px;
+    height: 500px;
+    margin: 0 10%;
+}
+
+tr{
+    display: flex;
+
+}
+th, td{
+    width: calc(500px/7);
+    height: calc(500px/6);
+    font-size: 1.3rem;
+}
+td:hover{
+    cursor: pointer;
+}
+
+#table tr>th:first-child, #table tr td:nth-child(1), .td1{
+    color: red;
+}
+#table tr>th:last-child, #table tr>td:nth-child(7){
+    color: blue;
+}
+

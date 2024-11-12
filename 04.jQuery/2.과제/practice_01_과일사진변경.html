@@ -9,22 +9,33 @@
 
     <script>
       // name: apple or banana or grape or peach
-      function changeImg(name) {
-        switch (name){
-          case 'apple' : 
-            $('img').attr('src','../img/apple.jpg')
-          break;
-          case 'banana' : 
-            $('img').attr('src','../img/banana.jpg')
-          break;
-          case 'grape' : 
-            $('img').attr('src','../img/grape.jpg')
-          break;
-          case 'peach' : 
-            $('img').attr('src','../img/peach.jpg')
-          break;
-        }
+      // function changeImg(name) {
+      //   switch (name){
+      //     case 'apple' : 
+      //       $('img').attr('src','../img/apple.jpg')
+      //     break;
+      //     case 'banana' : 
+      //       $('img').attr('src','../img/banana.jpg')
+      //     break;
+      //     case 'grape' : 
+      //       $('img').attr('src','../img/grape.jpg')
+      //     break;
+      //     case 'peach' : 
+      //       $('img').attr('src','../img/peach.jpg')
+      //     break;
+      //   }
+      // }
+      
+      // function changeImg(name){
+      //   let img = document.querySelector('img')
+      //   img.setAttribute('src',`../img/${name}.jpg`) 
+      // }
+
+      function changeImg(name){
+        $('img').attr('src',`../img/${name}.jpg`)
       }
+
+
     </script>
   </head>
   <body>
