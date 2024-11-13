@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- bootstrap css cdn -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+ 
+</head>
+<body>
+    <h1>layout</h1>
+
+    <h2>container</h2>
+    <!-- 중단점(bootstrap 홈페이지로 일반적인 breakpoint 확인 가능)을 갖고 있음 = 반응형임 -->
+    <div class="container bg-danger">container</div>
+    <!-- 뷰포트(전체 너비 사용) -> 반응형이지만 보이진 않음 -->
+    <div class="container-fluid bg-primary">container-fluid</div>
+
+    <h2>grid</h2>
+    <!-- 
+    grid 사용시
+    container > .row > .col 순으로 사용
+    col : 각 row를 col의 개수만큼 모든 열의 너비가 같음
+    col-숫자 : 전체 1 중에서 숫자/12 크기로 가져감 -- 총합 > 12 ; 줄 바꿈하기 때문에 되도록 총합 <= 12 맞추기
+    row :  -->
+    <div class="container text-center">
+        <div class="row">
+            <!-- col-숫자 -> 숫자 변경해서 비율 변경 -->
+          <div class="col bg-danger">
+            Column
+          </div>
+          <div class="col bg-warning">
+            Column
+          </div>
+          <div class="col bg-success">
+            Column
+          </div>
+        </div>
+        <div class="row">
+            <div class="col bg-primary">col</div>
+            <div class="col bg-info">col</div>
+            <div class="col bg-primary">col</div>
+            <div class="col bg-info">col</div>
+            <div class="col bg-primary">col</div>
+            <div class="col bg-info">col</div>
+        </div>
+    </div>
+    <div class="container mt-1">
+        <div class="row">
+            <div class="col-4 bg-warning">col</div>
+            <div class="col-4 bg-danger">col</div>
+            <div class="col-4 bg-warning">col</div>
+        </div>
+    </div>
+    <br><br>
+    <!-- 
+    col-xl : 화면 크기 >= 1200px 
+    col-lg : 화면 크기 >= 992 px ; 992px <= 화면 크기 < 1200px
+    col-md : 화면 크기 >= 768px ; 768px <= 화면 크기 < 992px
+    col-sm : 화면 크기 >= 576px ; 576px <= 화면 크기 < 768px
+    col- : 화면 크기 < 576px -- 즉, 기본 값이 xs 이기 때문에 작은 거 부터 제작 하도록!
+    -->
+
+    <div class="container">
+        <div class="row">
+            <div class="bg-secondary text-white col-12 col-sm-6 col-md-4">col</div>
+            <div class="bg-dark text-white col-12 col-sm-6 col-md-4">col</div>
+        </div>
+    </div>
+
+    <br><br>
+    <h2>실습</h2>
+    <!-- 
+    .container > .row > .col*6
+    xl : 한 줄을 6등분
+    md : 두 줄을 각각 3등분
+    sm : 두 줄 > 1:2:1
+    sm보다 작을 때(xs) : 6줄
+     -->
+     <div class="container-fluid">
+        <div class="row">
+            <div class="col col-12 col-sm-3 col-md-4 col-xl-2 text-bg-light">col</div>
+            <div class="col col-12 col-sm-6 col-md-4 col-xl-2 text-bg-info">col</div>
+            <div class="col col-12 col-sm-3 col-md-4 col-xl-2 text-bg-primary">col</div>
+            <div class="col col-12 col-sm-3 col-md-4 col-xl-2 text-bg-warning">col</div>
+            <div class="col col-12 col-sm-6 col-md-4 col-xl-2 text-bg-success">col</div>
+            <div class="col col-12 col-sm-3 col-md-4 col-xl-2 text-bg-dark">col</div>
+        </div>
+     </div>
+
+
+</body>
+</html>
