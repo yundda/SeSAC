@@ -78,11 +78,11 @@
         </tr>
     </table>
     <script>
-        $(`td`).click(function(){
+        $(`td`).click((function(){
             let tddate = $(this).attr('class')
             let date = Number(tddate.slice(2))
             $('#date').val(date)
-        })
+        }))
 
         $('form').submit(function(e){
             e.preventDefault();
