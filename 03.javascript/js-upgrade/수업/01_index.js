@@ -21,7 +21,7 @@ console.log(v1,v2,v3,v4,v5)
 let value1 = 'second'
 let value2 = 'first'
 
-let temp; // 값을 저장하기 위하 임시 변수
+let temp; // 값을 저장하기 위한 임시 변수
 temp = value1 // temp = second
 value1 = value2 // value1 = value2 = first
 value2 = temp
@@ -53,6 +53,7 @@ console.log(title)
 
 const {title : t1, content : c1} = obj
 console.log(t1, c1)
+console.log(obj)
 
 
 // 2. spared와 rest ...
@@ -75,6 +76,7 @@ console.log(arr6)
 
 // 2-2. string
 const str = 'alliehigh'
+console.log(...str)
 let strToArr = [...str]
 console.log(strToArr)
 // +) 메소드로 해보기
@@ -154,3 +156,10 @@ function addNumber(...val){
 
 let sumResult = addNumber(1,2,3,4,5)
 console.log(sumResult)
+
+function addNum(...value){
+    let sum = value.reduce(function(acc,cur){return acc+cur},0);
+    // let sum = value.reduce((acc,cur)=>acc+cur,0)
+    console.log(sum);
+}
+addNum(1,2,3,4,5)
