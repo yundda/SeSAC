@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>콜백 지옥 경험하기</title>
+  </head>
+  <body>
+    <h1>배경색이 1초에 한 번씩 변경이 됩니다.</h1>
+    <script>
+      function changeBg(color) {
+        return setTimeout(function () {
+          document.body.style.background = color;
+          resolve();
+        }, 1000);
+        return new Promise(function (resolve, reject) {});
+      }
+      // // promise 객체 > then을 이용한 chaining
+
+      changeBg("red")
+        .then(() => {
+          return changeBg("orange");
+        })
+        .then(() => {
+          return changeBg("yellow");
+        })
+        .then(() => changeBg("green"))
+        .then(() => changeBg("blue"));
+
+      // async function execute() {
+      //   await changeBg("red");
+      //   await changeBg("orange");
+      //   await changeBg("yellow");
+      // }
+      // execute();
+    </script>
+  </body>
+</html>
