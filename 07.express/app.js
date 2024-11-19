@@ -5,6 +5,7 @@ const PORT = 8080;
 // middleware 설정 추가
 // 뷰엔진 설정
 app.set("view engine", "ejs");
+// 🤔
 app.set("/views", "views");
 
 // static 폴더 추가(이미지, css 등 파일)
