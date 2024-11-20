@@ -43,3 +43,56 @@ new Promise((resolve, reject) => {
     console.log(result); // 20
     return result + 5;
   });
+
+// promise 과제
+function call(name) {
+  return new Promise((res, rej) => {
+    setTimeout(() => {
+      console.log(name);
+      res(name);
+    }, 1000);
+  });
+}
+
+function back() {
+  return new Promise((res, rej) => {
+    setTimeout(() => {
+      console.log("back");
+      res("back");
+    }, 1000);
+  });
+}
+
+function hell() {
+  return new Promise((res, rej) => {
+    setTimeout(() => {
+      res("callback hell");
+    }, 1000);
+  });
+}
+
+// .then 체이닝
+call("kim")
+  .then((result) => {
+    console.log(result + "반가워");
+    return back("back");
+  })
+  .then((result) => {
+    console.log(result + "을 실행했구나");
+    return hell();
+  })
+  .then((result) => {
+    console.log("여기는 " + result);
+  });
+
+// async await
+async function exec() {
+  let user = await call("kim");
+  console.log(user + "반가워");
+  let txt = await back();
+  console.log(txt + "을 실행했구나");
+  let msg = await hell();
+  console.log("여기는 " + msg);
+}
+
+exec();

@@ -7,11 +7,11 @@ function call(name) {
   });
 }
 
-function back(txt) {
+function back() {
   return new Promise(function (resolve, reject) {
     setTimeout(function () {
-      console.log(txt);
-      resolve(txt);
+      console.log("back");
+      resolve("back");
     }, 1000);
   });
 }

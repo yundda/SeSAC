@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>practice_결과 페이지입니다</title>
+    <style>
+      span {
+        color: coral;
+      }
+      #box > div {
+        box-shadow: 0 0 3px black;
+        border-radius: 10px;
+        margin: 10px;
+        padding: 10px;
+      }
+      #box2 > span {
+        color: rgb(124, 80, 255);
+        font-size: 25px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>결과 확인하기</h1>
+    <h2><span><%=userInfo.user%></span>님 환영합니다!</h2>
+    <div id="box">
+      <div>성별 : <%=userInfo.gender%></div>
+      <div>
+        생년월일 : <%=userInfo.year%>/<%=userInfo.month%>/<%=userInfo.date%>
+      </div>
+      <div>관심사 : <%=userInfo.interest%></div>
+    </div>
+    <hr />
+    <h2>다른 태그 작성해보기</h2>
+    <div id="box2">
+      <span><%=userInfo.id%></span>님의 MBTI는
+      <span
+        ><%=userInfo.EI%><%=userInfo.SN%><%=userInfo.FT%><%=userInfo.PJ%></span
+      >시네요!
+    </div>
+    <br />
+    <br />
+    <hr />
+    <br />
+    <a href="<%=title%>">홈으로 이동!</a>
+  </body>
+</html>
