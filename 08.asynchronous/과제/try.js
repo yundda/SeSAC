@@ -96,3 +96,49 @@ async function exec() {
 }
 
 exec();
+
+function add(n1, n2) {
+  return new Promise((res, rej) => {
+    setTimeout(() => {
+      res(n1 + n2);
+    }, 1000);
+  });
+}
+function mull(n) {
+  return new Promise((res, rej) => {
+    setTimeout(() => {
+      res(n * 2);
+    }, 1000);
+  });
+}
+function sub(n) {
+  return new Promise((res, rej) => {
+    setTimeout(() => {
+      res(n - 1);
+    }, 1000);
+  });
+}
+
+add(3, 4)
+  .then((result) => {
+    console.log(result);
+    return mull(result);
+  })
+  .then((result) => {
+    console.log(result);
+    return sub(result);
+  })
+  .then((result) => {
+    console.log(result);
+  });
+
+async function calc(n1, n2) {
+  let culc1 = await add(n1, n2);
+  console.log(culc1);
+  let culc2 = await mull(culc1);
+  console.log(culc2);
+  let culc3 = await sub(culc2);
+  console.log(culc3);
+}
+
+calc(4, 3);
