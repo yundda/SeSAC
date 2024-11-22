@@ -22,8 +22,19 @@
     </style>
   </head>
   <body>
+    <!-- 
+    userInfo
+    {
+    name: 'dda',
+    gender: '여자',
+    year: '1970',
+    month: '1',
+    date: '1',
+    interest: '패션'
+    }
+    -->
     <h1>결과 확인하기</h1>
-    <h2><span><%=userInfo.user%></span>님 환영합니다!</h2>
+    <h2><span><%=userInfo.name%></span>님 환영합니다!</h2>
     <div id="box">
       <div>성별 : <%=userInfo.gender%></div>
       <div>
@@ -31,6 +42,8 @@
       </div>
       <div>관심사 : <%=userInfo.interest%></div>
     </div>
+    <%if(addInfo){%>
+    <!-- <div id="addInformation"> -->
     <hr />
     <h2>다른 태그 작성해보기</h2>
     <div id="box2">
@@ -41,8 +54,18 @@
     </div>
     <br />
     <br />
+    <!-- </div> -->
+    <%}%>
     <hr />
     <br />
-    <a href="<%=title%>">홈으로 이동!</a>
+    <a href="/">홈으로 이동!</a>
+    <!-- <script>
+      if(addInfo===false){
+        let addInformation=document.getElementById('addInformation')
+        addInformation{
+          display : none
+        }
+      }
+    </script> -->
   </body>
 </html>

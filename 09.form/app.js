@@ -52,7 +52,7 @@ app.post("/js-form-check", function (req, res) {
 
 // 1. /practice1에 대한 GET 요청
 app.get("/practice1", (req, res) => {
-  res.render("practice/practice1", {});
+  res.render("practice/practice1");
 });
 
 // 2. /practice2에 대한 GET 요청
@@ -61,16 +61,28 @@ app.get("/practice2", (req, res) => {
 });
 // 3. 주소 지정 form GET 요청
 app.get("/practice1-get", (req, res) => {
+  // console.log(req.query);
+  /*
+  {
+    name: 'dda',
+    gender: '여자',
+    year: '1970',
+    month: '1',
+    date: '1',
+    interest: '패션'
+  }
+  */
   res.render("practice/practice_result", {
-    title: "/practice1",
     userInfo: req.query,
+    // ❗️
+    addInfo: false,
   });
 });
 // 4. 주소 지정 form POST 요청
 app.post("/practice2-post", (req, res) => {
   res.render("practice/practice_result", {
-    title: "/practice2",
     userInfo: req.body,
+    addInfo: true,
   });
 });
 
