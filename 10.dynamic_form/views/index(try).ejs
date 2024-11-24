@@ -48,87 +48,196 @@
     <div class="result"></div>
     <script>
       const resultBox = document.querySelector(".result");
-      //   function axiosGet() {
-      //     const form = document.forms["register"];
-      //     const data1 = {
-      //       name: form.name.value,
-      //       gender: form.gender.value,
-      //     };
+      function axiosGet() {
+        const form = document.forms["register"];
+        // 보낼 데이터 객체 형태로 만들기
 
-      //     axios({
+        const data1 = {
+          name: form.name.value,
+          gender: form.gender.value,
+        };
+        // 유효성 검증
+        if (!form.name.checkValidity()) {
+          alert("이름을 입력해주세요!");
+          return;
+        }
+
+        if (!form.gender[0].checkValidity()) {
+          alert("성별을 선택해주세요!");
+          return;
+        }
+        axios({
+          method: "get",
+          url: "/axios", // form의 action에 해당
+          // 서버로 넘겨줄 데이터(서버가 req.query로 받을 데이터)
+          // get 방식 - params에 담아 보냄
+          params: data1,
+        })
+          .then((res) => {
+            // 통신 성공 시,
+            // ⭐️ = 서버에서 req.query를 응답으로 보냈기 때문에(=res.send(req.query))
+            // res라는 매개변수에 req.query가 담김
+
+            // axios에서는 res에 수많은 정보 포함(data, status, headers,config 등등)
+            // 그 중 res.data에 우리가 보낸 데이터가 담김 {name:'aaa',gender:'남성'}
+            resultBox.textContent = `${res.data.name}의 성별은 ${res.data.gender}`;
+            resultBox.style.color = "red";
+          })
+          .catch((err) => {
+            console.error(err);
+          });
+      }
+      // async function axiosGet() {
+      //   const form = document.forms["register"];
+      //   const data1 = {
+      //     name: form.name.value,
+      //     gender: form.gender.value,
+      //   };
+
+      //   try {
+      //     const response = await axios({
       //       method: "get",
-      //       url: "/axios",
-      //       params: data1,
-      //     })
-      //       .then((res) => {
-      //         resultBox.textContent = `${res.data.name}의 성별은 ${res.data.gender}`;
-      //         resultBox.style.color = "red";
-      //       })
-      //       .catch((err) => {
-      //         console.error(err);
-      //       });
+      //       url: `/axios?name=${data1.name}&gender=${data1.gender}`,
+      //       // url: "/axios",
+      //       // params: data1,
+      //     });
+      //     const { name, gender } = response.data;
+      //     resultBox.textContent = `${name}의 성별은 ${gender}`;
+      //     resultBox.style.color = "pink";
+      //   } catch (err) {
+      //     console.error(err);
       //   }
-      async function axiosGet() {
+      // }
+
+      function axiosPost() {
         const form = document.forms["register"];
         const data1 = {
           name: form.name.value,
           gender: form.gender.value,
         };
-        try {
-          const response = await axios({
-            method: "get",
-            url: "/axios",
-            params: data1,
+        axios({
+          method: "post",
+          url: "/axios",
+          data: data1,
+        })
+          .then((res) => {
+            const { name, gender } = res.data;
+            resultBox.textContent = `${name}의 성별은 ${gender}`;
+            resultBox.style.color = "blue";
+          })
+          .catch((err) => {
+            console.error(err);
           });
-          const { name, gender } = response.data;
-          resultBox.textContent = `${name}의 성별은 ${gender}`;
-          resultBox.style.color = "pink";
-        } catch (err) {
-          console.error(err);
-        }
       }
-
-      //   function axiosPost() {
-      //     const form = document.forms["register"];
-      //     const data1 = {
-      //       name: form.name.value,
-      //       gender: form.gender.value,
-      //     };
-      //     axios({
+      // async function axiosPost() {
+      //   const form = document.forms["register"];
+      //   const data1 = {
+      //     name: form.name.value,
+      //     gender: form.gender.value,
+      //   };
+      //   try {
+      //     const result = await axios({
       //       method: "post",
       //       url: "/axios",
-      //       data: data1,
-      //     })
-      //       .then((res) => {
-      //         const { name, gender } = res.data;
-      //         resultBox.textContent = `${name}의 성별은 ${gender}`;
-      //         resultBox.style.color = "blue";
-      //       })
-      //       .catch((err) => {
-      //         console.error(err);
-      //       });
+      //       data: data1, // post 방식일 때는, data에 담아 보냄
+      //     });
+      //     const { name, gender } = result.data;
+      //     resultBox.textContent = `${name}의 성별은 ${gender}`;
+      //     resultBox.style.color = "purple";
+      //   } catch (err) {
+      //     console.error(err);
       //   }
-      async function axiosPost() {
+      // }
+      function fetchGet() {
         const form = document.forms["register"];
-        const data1 = {
+        const data = {
           name: form.name.value,
           gender: form.gender.value,
         };
-        try {
-          const result = await axios({
-            method: "post",
-            url: "/axios",
-            data: data1,
+        // fetch의 defualt method는 get이라 생략 가능
+        // get 방식일 때는 url에 쿼리문(url?변수1&변수2)로 url 설정 및 보낼 데이터 설정
+        fetch(`/fetch?name=${data.name}&gender=${data.gender}`)
+          .then((res) => {
+            return res.json();
+            // res.send('object')인 경우는 return res.json()
+            // res.send('string') 인 경우는 return res.text()
+            // 서버에서 응답한 데이터를 사용하기 위해서는 처리 필요
+            // 시간이 걸리는 작업이기 때문에 이 작업이 끝난 뒤 다음 처리가 되도록 비동기 처리해야 함
+          })
+          .then((res) => {
+            const { name, gender } = res;
+            resultBox.innerText = `${name}의 성별은 ${gender}`;
+            resultBox.style.color = "brown";
+          })
+          .catch((err) => {
+            console.error(err);
           });
-          const { name, gender } = result.data;
-          resultBox.textContent = `${name}의 성별은 ${gender}`;
-          resultBox.style.color = "purple";
-        } catch (err) {
-          console.error(err);
-        }
       }
-      function fetchGet() {}
-      function fetchPost() {}
+
+      // async function fetchGet() {
+      //   const form = document.forms["register"];
+      //   const data = {
+      //     name: form.name.value,
+      //     gender: form.gender.value,
+      //   };
+      //   try {
+      //     const result = await fetch(
+      //       `/fetch?name=${data.name}&gender=${data.gender}`
+      //     );
+      //     const res = await result.json();
+      //     resultBox.innerText = `${res.name}의 성별은 ${res.gender}`;
+      //     resultBox.style.color = "aquamarine";
+      //   } catch (err) {
+      //     console.error(err);
+      //   }
+      // }
+      function fetchPost() {
+        const form = document.forms["register"];
+        const data = {
+          name: form.name.value,
+          gender: form.gender.value,
+        };
+
+        fetch("/fetch", {
+          method: "post",
+          headers: { "Content-type": "application/json" },
+          // JSON.stringify() : js object -> json 타입으로 변환
+          // JSON.parse() : json타입 -> js object로 변환
+          body: JSON.stringify(data),
+        })
+          .then((res) => {
+            return res.json();
+          })
+          .then((res) => {
+            resultBox.innerText = `${res.name}의 성별은 ${res.gender}`;
+            resultBox.style.color = "gray";
+          })
+          .catch((err) => {
+            console.error(err);
+          });
+      }
+
+      // async function fetchPost() {
+      //   const form = document.forms["register"];
+      //   const data1 = {
+      //     name: form.name.value,
+      //     gender: form.gender.value,
+      //   };
+      //   try {
+      //     const result = await fetch("/fetch", {
+      //       method: "post",
+      //       headers: {
+      //         "content-type": "application/json",
+      //       },
+      //       body: JSON.stringify(data1),
+      //     });
+      //     const res = await result.json();
+      //     resultBox.innerText = `${res.name}의 성별은 ${res.gender}`;
+      //     resultBox.style.color = "tomato";
+      //   } catch (err) {
+      //     console.error(err);
+      //   }
+      // }
     </script>
   </body>
 </html>

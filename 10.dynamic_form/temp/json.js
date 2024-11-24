@@ -18,13 +18,13 @@ const car = `{
     "isElectric":true,
     "option":["side mirror", "smart sensor"]
 }`;
-console.log(typeof car);
+console.log(typeof car); //json ; string
 // JSON.parse() > JSON -> object
 const obj = JSON.parse(car);
 console.log(obj);
 console.log(obj.model);
 console.log(obj.option);
-// console.log(typeof obj);
+console.log(typeof obj);
 
 // JSON.stringify() > object -> JSON
 const carJson = JSON.stringify(obj);
