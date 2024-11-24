@@ -13,7 +13,7 @@ app.use(express.json());
 
 /* API 설정 */
 app.get("/", (req, res) => {
-  res.render("index(try)");
+  res.render("index2");
 });
 
 // axios get
