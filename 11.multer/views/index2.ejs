@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>multer 사용(try)</title>
+    <!-- axios CDN -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <style>
+      form {
+        border: 2px solid #ccc;
+        padding: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>multer 사용해보기</h1>
+    <h2>파일 한 개 업로드</h2>
+    <form>
+      <input type="file" name="userfile" />
+      <br />
+      <input type="text" name="title" placeholder="사진 제목" />
+      <br />
+      <br />
+      <button>업로드</button>
+    </form>
+    <br />
+    <h2>하나의 input에 파일 여러개 업로드</h2>
+    <form>
+      <input type="file" name="multifiles" />
+      <br />
+      <input type="text" name="title" placeholder="사진 제목" />
+      <br />
+      <button>업로드</button>
+    </form>
+    <br />
+    <h2>여러개 input에 파일 업로드</h2>
+    <form>
+      <input type="file" name="file1" /><br />
+      <input type="text" name="title1" placeholder="사진 제목1" />
+      <br /><br />
+      <input type="file" name="file2" /><br />
+      <input type="text" name="title2" placeholder="사진 제목2" />
+      <br /><br />
+      <input type="file" name="file3" /><br />
+      <input type="text" name="title3" placeholder="사진 제목3" />
+      <br /><br />
+      <button>업로드</button>
+    </form>
+    <br />
+    <hr />
+    <br />
+    <h2>동적 파일 업로드</h2>
+    <div class="dynamic">
+      <input type="file" name="dynamicFile" id="dynamicFile" />
+      <br />
+      <input
+        type="text"
+        name="dynamicTitle"
+        id="dynamicTitle"
+        placeholder="프로필 설명"
+      />
+      <br />
+      <button onclick="fileUpload()">프로필 업로드</button>
+      <button onclick="fileAndTextUpload()">프로필 업로드(with title)</button>
+    </div>
+    <img
+      src="/static/default.jpg"
+      alt="기본 프로필 이미지"
+      width="200"
+      height="200"
+    />
+  </body>
+</html>

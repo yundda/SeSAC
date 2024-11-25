@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>로그인</title>
+    <!-- axios CDN -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <style>
+      label {
+        display: flex;
+      }
+      label span {
+        width: 80px;
+      }
+      .success {
+        color: blue;
+        font-size: 1.2rem;
+        font-weight: 700;
+      }
+      .error {
+        color: red;
+        font-size: 1.2rem;
+        font-weight: 700;
+      }
+    </style>
+  </head>
+  <body>
+    <form name="form">
+      <label
+        ><span>아이디</span>
+        <input type="text" name="userid" required />
+      </label>
+      <br />
+      <label
+        ><span>비밀번호</span>
+        <input type="password" name="userpw" required />
+      </label>
+      <br /><br />
+      <button type="button" onclick="login()">로그인</button>
+    </form>
+    <br />
+    <div class="result"></div>
+
+    <script>
+      const result = document.querySelector(".result");
+      function login() {
+        const form = document.forms["form"];
+        const data = {
+          userid: form.userid.value,
+          userpw: form.userpw.value,
+        };
+
+        //유효성 검증
+        if (!form.userid.checkValidity() || !form.userpw.checkValidity()) {
+          result.innerText = "아이디와 비밀번호는 필수입니다.";
+          return;
+        }
+        axios({
+          method: "post",
+          url: "/practice_axiosPost",
+          data: data,
+        })
+          .then((res) => {
+            console.log(res.data);
+            // {isSuccess: false}
+            // {isSuccess: true, userid:'banana'}
+            if (res.data.isSuccess) {
+              result.innerText = `${res.data.userid}님 로그인 성공!`;
+              result.classList.add("success");
+              result.classList.remove("error");
+            } else {
+              result.innerText = "아이디 또는 비밀번호 오류입니다.";
+              result.classList.add("error");
+              result.classList.remove("success");
+            }
+          })
+          .catch((err) => {
+            console.error(err);
+          });
+      }
+    </script>
+  </body>
+</html>

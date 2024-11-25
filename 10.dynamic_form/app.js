@@ -54,6 +54,40 @@ app.post("/fetch", (req, res) => {
   console.log(req.body);
   res.send(req.body);
 });
+
+//------------Open AI 사용----------
+//외부 api 사용
+app.get("/api", (req, res) => {
+  res.render("api");
+});
+
+// -----실습 문제2 전역 변수 -----
+const realID = "banana";
+const realPw = "4321";
+
+// -------실습-----------
+app.get("/practice1", (req, res) => {
+  res.render("practice/practice1");
+});
+
+app.get("/practice2", (req, res) => {
+  res.render("practice/practice2");
+});
+
+app.get("/practice_axiosGet", (req, res) => {
+  res.send(req.query);
+});
+
+app.post("/practice_axiosPost", (req, res) => {
+  console.log(req.body);
+  // { userid: 'sdf', userpw: 'asdf' }
+  const { userid, userpw } = req.body;
+  if (realID === userid && realPw === userpw) {
+    res.send({ isSuccess: true, userid: req.body.userid });
+  } else {
+    res.send({ isSuccess: false });
+  }
+});
 // 서버 시작
 app.listen(PORT, () => {
   console.log(`http://localhost:${PORT}`);
