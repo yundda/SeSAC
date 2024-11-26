@@ -55,7 +55,7 @@ app.post("/fetch", (req, res) => {
   res.send(req.body);
 });
 
-//------------Open AI 사용----------
+//------------Open API 사용----------
 //외부 api 사용
 app.get("/api", (req, res) => {
   res.render("api");

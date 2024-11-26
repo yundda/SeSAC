@@ -16,7 +16,7 @@
   <body>
     <h1>multer 사용해보기</h1>
     <h2>파일 한 개 업로드</h2>
-    <form>
+    <form action="/upload1" method="post" enctype="multipart/form-data">
       <input type="file" name="userfile" />
       <br />
       <input type="text" name="title" placeholder="사진 제목" />
@@ -26,8 +26,8 @@
     </form>
     <br />
     <h2>하나의 input에 파일 여러개 업로드</h2>
-    <form>
-      <input type="file" name="multifiles" />
+    <form action="/upload2" method="post" enctype="multipart/form-data">
+      <input type="file" name="multifiles" multiple />
       <br />
       <input type="text" name="title" placeholder="사진 제목" />
       <br />
@@ -35,7 +35,7 @@
     </form>
     <br />
     <h2>여러개 input에 파일 업로드</h2>
-    <form>
+    <form action="/upload3" method="post" enctype="multipart/form-data">
       <input type="file" name="file1" /><br />
       <input type="text" name="title1" placeholder="사진 제목1" />
       <br /><br />
@@ -70,5 +70,30 @@
       width="200"
       height="200"
     />
+    <script>
+      function fileUpload() {
+        const file = document.querySelector("#dynamicFile");
+        console.log(file.files);
+        console.log(file.files[0]);
+        const formData = new FormData();
+        formData.append("File", file.files[0]);
+        axios({
+          method: "post",
+          url: "/upload4",
+          data: formData,
+          headers: {
+            "content-type": "multipart/form-data",
+          },
+        })
+          .then((res) => {
+            console.log(res.data.path);
+            const img = document.querySelector("img");
+            img.src = `/${res.data.path}`;
+          })
+          .catch((err) => {
+            console.error(err);
+          });
+      }
+    </script>
   </body>
 </html>

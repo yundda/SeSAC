@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Page</title>
+    <!-- css -->
+    <link rel="stylesheet" href="/static/common.css" />
+  </head>
+  <body>
+    <div class="container">
+        <div class="mypage">
+        <span><%=userInfo.name%></span>님 마이페이지
+        </div>
+        <img src='/<%=path%>' alt="userprofile" width="200"/>
+        <div class="profilecontainer">
+            <div class="idcontainer">
+                <span>아이디</span>
+                <span><%=userInfo.id%></span>
+            </div>
+            <div class="pwcontainer">
+                <span>비밀번호</span>
+                <span><%=userInfo.pw%></span>
+            </div>
+            <div class="namecontainer">
+                <span>이름</span>
+                <span><%=userInfo.name%></span>
+            </div>
+            <div class="agecontainer">
+                <span>나이</span>
+                <span><%=userInfo.age%></span>
+        </div>  
+    </div>
+  </body>
+</html>

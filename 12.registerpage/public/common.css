@@ -1,0 +1,32 @@
+* {
+  box-sizing: border-box;
+}
+.container {
+  border: 2px solid #ccc;
+  width: 400px;
+  text-align: center;
+}
+.mypage {
+  width: 100%;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+.mypage span {
+  color: skyblue;
+}
+.profilecontainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.profilecontainer div {
+  padding: 10px;
+}
+.profilecontainer div span {
+  padding: 0 10px;
+}
+
+.container img {
+  border: 2px solid rgb(243, 204, 210);
+}

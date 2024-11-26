@@ -40,8 +40,34 @@ const uploadDetail = multer({
       // console.log("path.extname", path.extname(file.originalname));
     },
   }),
-  limits: { fieldSize: 5 * 1024 * 1024 }, // 5MB
+  limits: { fileSize: 5 * 1024 * 1024 }, // 5MB
 });
+// // --------연습----------
+// const up = multer({
+//   storage: multer.diskStorage({
+//     destination: function (res, file, done) {
+//       done(null, "uploads");
+//     },
+//     filename: function (res, file, done) {
+//       const ext = path.extname(file.originalname);
+//       done(null, path.basename(file.originalname, ext) + Date.now() + ext);
+//     },
+//   }),
+//   limits: { fieldSize: 5 * 1024 * 1024 },
+// });
+
+// const uplo = multer({
+//   storage: multer.diskStorage({
+//     destination: (res, file, done) => {
+//       done(null, "uploads");
+//     },
+//     filename: (res, file, done) => {
+//       const ext = path.extname(file.originalname);
+//       done(null, path.basename(file.originalname, ext) + Date.now() + ext);
+//     },
+//   }),
+//   limits: { fieldSize: 5 * 1024 * 1024 },
+// });
 
 /* API 설정 */
 app.get("/", (req, res) => {
@@ -49,7 +75,7 @@ app.get("/", (req, res) => {
 });
 // 1. 파일 한 개 업로드
 app.post("/upload", uploadDetail.single("userfile"), (req, res) => {
-  // index에서 설정한 foam의 name을 입력'userfile'
+  // index에서 설정한 input의 name을 입력'userfile'
   console.log(req.body); // 파일 정보는 req.file에서 확인
   console.log(req.file);
   /*
