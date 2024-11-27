@@ -1,0 +1,43 @@
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  width: 400px;
+  margin: 20%;
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 10%;
+}
+
+.mypage {
+  width: 100%;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+.mypage span {
+  color: rgb(153, 153, 225);
+}
+img {
+  margin: 10% 25% 10% 25%;
+  border: 2px solid rgb(247, 202, 209);
+  border-radius: 10%;
+}
+
+.infoContainer {
+  display: flex;
+  justify-content: center;
+}
+.filed {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin: 0 10px;
+}
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin: 0 10px;
+}

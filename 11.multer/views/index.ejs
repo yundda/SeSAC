@@ -12,6 +12,11 @@
         border: 2px solid #ccc;
         padding: 1rem;
       }
+      .profile {
+        background-color: pink;
+        border-radius: 50%;
+        box-shadow: 0 0 20px #0002;
+      }
     </style>
   </head>
   <body>
@@ -72,6 +77,7 @@
       width="200"
       height="200"
     />
+    <div class="tit"></div>
     <script>
       function fileUpload() {
         const file = document.getElementById("dynamicFile");
@@ -99,7 +105,46 @@
           img.src = `/${res.data.path}`;
         });
       }
-      function fileAndTextUpload() {}
+      // 2. 글과 파일을 함께 업로드
+      function fileAndTextUpload() {
+        const formData = new FormData();
+        // input[type=file]
+        const file = document.getElementById("dynamicFile");
+        // input[type=text]
+        const title = document.getElementById("dynamicTitle");
+        const img = document.querySelector("img");
+
+        formData.append("dynamicFile", file.files[0]);
+        formData.append("dynamicTitle", title.value);
+
+        /* 
+        formData = {
+          dynamicFile: 파일정보(fileList[0])
+          dynamicTitle: "사진 제목 string"
+        }
+        */
+
+        axios({
+          method: "post",
+          url: "/dynamicUpload",
+          headers: { "content-type": "multipart/form-data" },
+          data: formData,
+        })
+          .then((res) => {
+            console.log(res.data);
+            console.log(res.data.fileInfo.dynamicTitle); // 'title에 담은 txt'
+            console.log(res.data.file.path); // 'uploads/pooh1732671527048.png'
+
+            img.src = `/${res.data.file.path}`;
+            img.alt = res.data.fileInfo.dynamicTitle + "사진";
+            img.classList.add("profile");
+            document.querySelector(".tit").innerText =
+              res.data.fileInfo.dynamicTitle;
+          })
+          .catch((err) => {
+            console.error("error!", err);
+          });
+      }
     </script>
   </body>
 </html>
