@@ -1,3 +1,4 @@
+-- Active: 1732688622705@@127.0.0.1@3306@sesac
 show DATABASES;
 
 create DATABASE mydatabase DEFAULT CHARACTER SET utf8 collate utf8_general_ci;
@@ -126,5 +127,75 @@ WHERE address LIKE '서울%'
 ORDER BY name asc
 LIMIT 3; -- 순서가 중요합니다
 
+SELECT * FROM user ;
 
+-- update 문
+-- UPDATE 테이블명 set 컬럼명 = '바꿀 값' WHERE 조건
 
+UPDATE user set address = '서울특별시 도봉구' WHERE id=1;
+UPDATE user set address = '제주특별자치도 제주시' , name = '이지현' WHERE id=2;
+
+-- delete 문
+-- DELTE FROM 테이블명 WHERE 조건
+DELETE FROM user WHERE id=11;
+DELETE FROM user WHERE id > 8;
+
+CREATE TABLE student(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(10) NOT NULL DEFAULT '홍길동',
+    hobby VARCHAR(20)
+);
+
+desc student;
+
+INSERT INTO student (hobby) VALUES ('등산');
+INSERT INTO student (hobby,name) VALUES ('등산','박상우');
+INSERT INTO student VALUES ('등산','박상우');
+
+SELECT * FROM student;
+
+-- HAVING과 GROUP BY
+DROP Table if EXISTS user;
+SHOW tables;
+CREATE TABLE user(
+    user_id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(10) NOT NULL,
+    specialize ENUM('축구','야구','클라이밍','배드민턴') NOT NULL,
+    gender ENUM('남','여') NOT NULL,
+    carrer_year INT NOT NULL
+);
+DESC user;
+
+INSERT INTO user VALUES(NULL, '김판곤', '축구', '남', 40);
+INSERT INTO user VALUES(NULL, '손흥민', '축구', '남',15);
+INSERT INTO user VALUES(NULL, '김자인', '클라이밍', '여',10);
+INSERT INTO user VALUES(NULL, '김동우', '축구', '남',1);
+INSERT INTO user VALUES(NULL, '전유진', '배드민턴', '여',2);
+INSERT INTO user VALUES(NULL, '이대호', '야구', '남',24);
+INSERT INTO user VALUES(NULL, '안세영', '배드민턴', '여',11);
+INSERT INTO user VALUES(NULL, '배서연', '클라이밍', '여',3);
+INSERT INTO user VALUES(NULL, '황희찬', '축구', '남',9);
+INSERT INTO user VALUES(NULL, '지소연', '축구', '여',17);
+INSERT INTO user VALUES(NULL, '이정후', '야구', '남',11);
+INSERT INTO user VALUES(NULL, '김광현', '야구', '남',21);
+
+SELECT * FROM user;
+
+-- 집계함수 사용해보기
+-- count, sum, avg, min, max
+SELECT COUNT(specialize) FROM user WHERE specialize = '축구'; -- specialize가 축구인 튜플의 개수
+SELECT SUM(carrer_year) FROM user WHERE specialize = '축구'; -- 축구 선수의 경력 합
+SELECT AVG(carrer_year) FROM user WHERE specialize = '축구'; -- 축구 선수 경력 평균
+SELECT min(carrer_year) FROM user WHERE specialize = '축구'; -- 축구 선수 중 경력이 가장 적은 사람
+SELECT max(carrer_year) FROM user WHERE specialize = '축구'; -- 축구 선수 중 경력이 가장 많은 사람
+
+-- group by (같은 그룹끼리 묶어서 조회)
+SELECT specialize FROM user GROUP BY specialize;
+SELECT specialize, count(specialize) FROM user GROUP BY specialize;
+-- having
+SELECT specialize, count(specialize)
+FROM user
+WHERE gender = '여'
+GROUP BY specialize
+-- 그룹화된 테이블에 조건을 다는 것
+HAVING COUNT(specialize) >= 2;
