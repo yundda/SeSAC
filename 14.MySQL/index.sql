@@ -5,10 +5,6 @@ create DATABASE mydatabase DEFAULT CHARACTER SET utf8 collate utf8_general_ci;
 
 create DATABASE sesac CHARACTER SET utf8mb4 collate utf8mb4_unicode_ci;
 
-/*
-utf8
-*/
-
 -- 데이터 베이스 사용 선언
 USE sesac;
 

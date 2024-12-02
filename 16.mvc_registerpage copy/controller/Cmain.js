@@ -1,21 +1,19 @@
-const express = require("express");
 const userInfo = require("../model/user");
+console.log(userInfo.userInfos);
 
-exports.main = (req, res) => {
+exports.index = (req, res) => {
   res.render("index");
 };
 
 exports.register = (req, res) => {
+  const { realID, realPw } = userInfo.userInfos;
   const { userid, userpw } = req.body;
-  const { realID, realPw } = userInfo.userInfos()[0];
   if (userid === realID && userpw === realPw) {
     res.send({
       isSuccess: true,
       userid: userid,
     });
   } else {
-    res.send({
-      isSuccess: false,
-    });
+    res.send({ isSuccess: false });
   }
 };

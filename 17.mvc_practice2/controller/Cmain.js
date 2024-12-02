@@ -1,5 +1,7 @@
 const user = require("../model/user");
 const User = user.user;
+console.log(User);
+console.log(User.split("\n"));
 
 const Users = User.split("\n").map((row) => {
   const [id, pw, name] = row.split("//");

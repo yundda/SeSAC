@@ -49,14 +49,13 @@
         })
           .then((res) => {
             if (res.data.isSuccess) {
-              result.innerText = "로그인 성공!";
-              result.classList.add("success");
+              result.innerText = `${res.data.userid}`;
               result.classList.remove("fail");
+              result.classList.add("success");
             } else {
-              result.innerText =
-                "로그인 실패! 아이디와 비밀번호를 다시 확인하세요!";
-              result.classList.add("fail");
+              result.innerText = "로그인 실패!";
               result.classList.remove("success");
+              result.classList.add("fail");
             }
           })
           .catch((err) => {

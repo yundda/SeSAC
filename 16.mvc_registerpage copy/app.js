@@ -8,7 +8,10 @@ app.set("views", "./views");
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-/* 라우트 */
+// /* 라우트 */
+// const indexRouter = require("./routes/index");
+// app.use("/", indexRouter);
+
 const indexRouter = require("./routes/index");
 app.use("/", indexRouter);
 
