@@ -1,0 +1,12 @@
+@server = http://localhost:8080
+
+GET {{server}}/
+
+### POST 요청
+POST {{server}}/test
+Content-Type: application/json charset=UTF-8
+
+{
+    "name" : "따",
+}
+

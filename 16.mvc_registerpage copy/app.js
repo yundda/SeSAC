@@ -8,12 +8,14 @@ app.set("views", "./views");
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-// /* 라우트 */
-// const indexRouter = require("./routes/index");
-// app.use("/", indexRouter);
-
+/* 라우트 */
 const indexRouter = require("./routes/index");
 app.use("/", indexRouter);
+
+// 404 페이지 설정
+// app.get("*", (req, res) => {
+//   res.send(`<h2>Page Not Found</h2>`);
+// });
 
 app.listen(PORT, () => {
   console.log(`http://localhost:${PORT}`);

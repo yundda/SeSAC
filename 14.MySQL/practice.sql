@@ -57,3 +57,23 @@ SELECT * FROM user WHERE age BETWEEN 25 and 50;
 UPDATE user set pw = '12345678' WHERE id='hong1234';
 -- 9.
 DELETE FROM user WHERE id='jungkrat';
+
+CREATE TABLE visitor(
+    id AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(10) NOT NULL,
+    comment mediumtext
+);
+
+INSERT INTO (name,comment) VALUES ('홍길동','이찬혁');
+INSERT INTO (name,comment) VALUES ('이찬혁','으라차차');
+
+########## DCL
+CREATE USER 'sesac'@'%' IDENTIFIED BY '1111';
+-- 권한 설정
+GRANT ALL PRIVILEGES ON *.* TO 'sesac'@'%' WITH GRANT OPTION;
+
+ALTER USER 'sesac'@'%' IDENTIFIED WITH mysql_native_password BY '1111'
+FLUSH PRIVILEGES;
+
+SELECT * FROM mysql.user;
+SHOW GRANTS for 'sesac'@'%'

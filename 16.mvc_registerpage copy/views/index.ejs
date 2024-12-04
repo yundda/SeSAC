@@ -26,22 +26,31 @@
     </style>
   </head>
   <body>
-    <form name="register">
-      <label> <span>아이디</span><input type="text" name="userid" /> </label>
+    <form name="login">
+      <label>
+        <span>아이디</span><input type="text" name="userid" required />
+      </label>
       <br />
-      <label> <span>비밀번호</span><input type="text" name="userpw" /> </label>
+      <label>
+        <span>비밀번호</span><input type="password" name="userpw" required />
+      </label>
       <br />
-      <button type="button" onclick="login()">로그인</button>
+      <button type="button" onclick="clickLogin()">로그인1</button>
+      <button type="button" onclick="clickLogin2()">로그인2</button>
     </form>
     <div class="result"></div>
     <script>
-      function login() {
-        const result = document.querySelector(".result");
-        const form = document.forms["register"];
+      const result = document.querySelector(".result");
+      function clickLogin() {
+        const form = document.forms["login"];
         const data = {
           userid: form.userid.value,
           userpw: form.userpw.value,
         };
+        if (!form.userid.checkValidity() || !form.userpw.checkValidity()) {
+          result.innerText = "아이디와 비밀번호를 입력해주세요";
+          return;
+        }
         axios({
           url: "/login",
           method: "post",
@@ -49,7 +58,7 @@
         })
           .then((res) => {
             if (res.data.isSuccess) {
-              result.innerText = `${res.data.userid}`;
+              result.innerText = `${res.data.userid}님 환영합니다!`;
               result.classList.remove("fail");
               result.classList.add("success");
             } else {
@@ -59,8 +68,33 @@
             }
           })
           .catch((err) => {
-            console.error(err);
+            console.error("err!", err);
           });
+      }
+      async function clickLogin2() {
+        try {
+          const form = document.forms["login"];
+          const data = {
+            userid: form.userid.value,
+            userpw: form.userpw.value,
+          };
+          const res = await axios({
+            url: "/login2",
+            method: "post",
+            data: data,
+          });
+          if (res.data.isSuccess) {
+            result.innerText = `${res.data.username}님 환영합니다!`;
+            result.classList.remove("fail");
+            result.classList.add("success");
+          } else {
+            result.innerText = "로그인 실패!";
+            result.classList.remove("success");
+            result.classList.add("fail");
+          }
+        } catch (err) {
+          console.error("err!!!", err);
+        }
       }
     </script>
   </body>
