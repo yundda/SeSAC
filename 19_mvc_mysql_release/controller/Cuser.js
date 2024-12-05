@@ -11,9 +11,9 @@ exports.getSignup = (req, res) => {
 };
 // POST '/user/signup'
 exports.postSignup = (req, res) => {
-  // console.log(req.body);
+  console.log(req.body);
   User.postSignup(req.body, (result) => {
-    // console.log("Cuser.js signup :", result);
+    console.log("Cuser.js signup :", result);
     res.send(result + "번 등록완료");
   });
 };
