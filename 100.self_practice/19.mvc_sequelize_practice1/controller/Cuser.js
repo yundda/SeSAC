@@ -1,5 +1,5 @@
 // TODO: 컨트롤러 코드
-const User = require("../model/User");
+const models = require("../models");
 
 // GET '/user'
 exports.getIndex = (req, res) => {
@@ -14,53 +14,99 @@ exports.getSignin = (req, res) => {
   res.render("signin");
 };
 
-// POST '/user/signup'
-exports.postSignup = (req, res) => {
-  console.log("postSignup Cuser.js : ", req.body);
-  User.addUser(req.body, (result) => {
-    console.log("Cuser.js result :", result);
-    res.send(result.insertId + "번 등록");
-  });
+// 회원 가입 ; POST '/user/signup'
+exports.postSignup = async (req, res) => {
+  try {
+    const result = await models.User.create({
+      userid: req.body.userid,
+      pw: req.body.pw,
+      name: req.body.name,
+    });
+    console.log("회원가입 결과 : ", result);
+    res.send("회원가입 성공");
+  } catch (err) {
+    console.error("회원가입 실패", err);
+    res.status(500).send("err");
+  }
 };
 
-// POST '/user/signin'
-exports.postSignin = (req, res) => {
-  console.log(req.body);
-  const { userid, pw } = req.body;
-  User.postSignin(req.body, (result) => {
-    console.log("Cuser.js", result);
-    res.send(result);
-
-    // if (userid === result.userid && pw === result.pw) {
-    //   res.send({
-    //     isSuccess: true,
-    //     result: result,
-    //   });
-    // } else {
-    //   res.send({ isSuccess: false });
-    // }
-  });
+// 로그인 ; POST '/user/signin'
+exports.postSignin = async (req, res) => {
+  try {
+    const result = await models.User.findOne({
+      where: {
+        userid: req.body.userid,
+        pw: req.body.pw,
+      },
+    });
+    console.log("로그인 시도 결과: ", result);
+    // console.log("로그인 시도 : ", result.dataValues);
+    if (Boolean(result)) {
+      res.send(true);
+    } else {
+      res.send(false);
+    }
+  } catch (err) {
+    console.error("회원가입 실패", err);
+    res.status(500).send("err");
+  }
 };
 
-// POST '/user/profile'
+// 프로필 조회 ; POST '/user/profile'
 exports.postProfile = (req, res) => {
-  console.log("Cuser.js profile :", req.body);
-  User.postSignin(req.body, (result) => {
-    res.render("profile", { data: result });
-  });
+  models.User.findOne({
+    where: {
+      userid: req.body.userid,
+    },
+  })
+    .then((result) => {
+      console.log("프로필 조회 결과 : ", result);
+      // res.send("프로필 조회");
+      res.render("profile", {
+        data: result.dataValues,
+        //  dataValues: { id: 20, userid: '555', name: '555', pw: '555' },
+      });
+    })
+    .catch((err) => {
+      console.error("프로필 조회 err", err);
+      res.status(500).send("프로필 조회 err");
+    });
 };
 
-// PATCH '/user/profile/edit'
+// 회원정보 수정 ; PATCH '/user/profile/edit'
 exports.patchProfile = (req, res) => {
-  User.patchProfile(req.body, (result) => {
-    console.log("Cuser.js :", result);
-    res.send("수정");
-  });
+  models.User.update(
+    {
+      pw: req.body.pw,
+      name: req.body.name,
+    },
+    {
+      where: {
+        id: req.body.id,
+      },
+    }
+  )
+    .then((result) => {
+      console.log("수정 완료 결과 :", result); //[1], [0]
+      res.end();
+    })
+    .catch((err) => {
+      console.error("수정 실패 err :", err);
+      res.status(500).send("서버 수정 실패 err :");
+    });
 };
 
-// DELETE '/user/profile/delete'
+// 회원정보 삭제 ; DELETE '/user/profile/delete'
 exports.deleteProfile = (req, res) => {
-  User.deleteProfile(req.body.id, (result) => {
-    res.send(req.body.id + "번 id 삭제");
-  });
+  models.User.destroy({
+    where: { id: req.body.id },
+  })
+    .then((result) => {
+      console.log("삭제 완료 결과 :", result); // 1 , 0
+      res.send("삭제 완료");
+    })
+    .catch((err) => {
+      console.error("삭제 오류", err);
+      res.status(500).send("서버 삭제 오류");
+    });
 };

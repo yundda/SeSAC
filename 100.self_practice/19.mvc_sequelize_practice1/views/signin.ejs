@@ -35,25 +35,18 @@
           data: {
             userid: form.userid.value,
             pw: form.pw.value,
-            name: form.name.value,
           },
         })
           .then((res) => {
-            console.log(res.data);
-            if (
-              res.data.userid === form.userid.value &&
-              res.data.pw === form.pw.value
-            ) {
-              form_info.userid.value = res.data.userid;
-              form_info.submit();
+            if (res.data) {
               console.log("로그인 성공");
-              // document.location.href = "/user/profile";
+              form_info.userid.value = form.userid.value;
+              form_info.submit();
             } else {
               alert("로그인 실패");
               form.userid.value = "";
               form.pw.value = "";
               form_info.reset();
-              return;
             }
           })
           .catch((err) => {

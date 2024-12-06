@@ -1,4 +1,5 @@
 const express = require("express");
+const { sequelize } = require("./models");
 const app = express();
 const PORT = 8000;
 
@@ -10,14 +11,23 @@ app.use(express.json());
 
 // TODO: 라우팅 분리
 // 기본 주소: localhost:PORT/user <- 주의!!
-const useRouter = require("./routes/user");
-app.use("/user", useRouter);
+const userRouter = require("./routes/user");
+app.use("/user", userRouter);
 
 // TODO: 404 에러 처리
 app.get("*", (req, res) => {
   res.render("404");
 });
 
-app.listen(PORT, () => {
-  console.log(`http://localhost:${PORT}/user`);
-});
+// sync()
+sequelize
+  .sync({ force: false })
+  .then(() => {
+    console.log("db연결 성공!");
+    app.listen(PORT, () => {
+      console.log(`http://localhost:${PORT}/user`);
+    });
+  })
+  .catch((err) => {
+    console.error("db 연결 오류", err);
+  });
