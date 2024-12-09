@@ -1,5 +1,4 @@
 // const Visitor = require("../model/Visitor");
-const { where } = require("sequelize");
 const models = require("../models/index");
 const { errorlogo } = require("../utils/common");
 // console.log(Visitor.getVisitors());
