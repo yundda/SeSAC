@@ -23,7 +23,7 @@ session({
     resave :  세션에 수정사항이 생기지 않더라도 매 요청마다 세션을 다시 저장할지 ; true, false(권장)
     saveUninitialized : 세션에 저장할 내역이 없더라도 처음부터 세션을 생성할지 ; true, false(권장)
     cookie{}: 세션 쿠키에 대한 설정 (cookie.js의 config 참고)
-    secure : true일 때는 http 에서만 세션을 주고 받는다.
+    secure : true일 때는 https 에서만 세션을 주고 받는다.
     name : 세션 쿠키의 이름(sessionID값을 저장하는 쿠키 이름, default : connect.sid)
     
     })
