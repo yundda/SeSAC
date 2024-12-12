@@ -3,9 +3,6 @@
   <%- include('include/include', { title: '로그인 페이지' })%>
   <body>
     <h1 id="info">로그인</h1>
-    <!-- <form action="/profile" method="POST" name="formInfo">
-      <input type="hidden" name="userid" /> 
-    </form>-->
     <form name="form-signin">
       <label>
         <span> ID </span>
@@ -35,12 +32,8 @@
     <script>
       async function signin() {
         const form = document.forms["form-signin"];
-        // const formInfo = document.forms["formInfo"];
         const info = document.getElementById("info");
         const signupLink = document.getElementById("signup");
-        // console.log(formInfo.userid);
-        // console.log(form.userid.value);
-        // console.log(form.pw.value);
         if (!form.userid.checkValidity()) {
           alert("아이디를 입력해주세요");
           return;
@@ -63,20 +56,13 @@
           if (isLogin) {
             console.log(message);
             form.innerHTML = "";
-            signupLink.innerHTML = "";
-            // signupLink.textContent = "마이페이지";
-            // signupLink.href = "/profile";
+            signupLink.textContent = "마이페이지";
+            signupLink.href = "/profile";
             info.innerText = `${name}님 환영합니다`;
-            // console.log(formInfo.userid);
-            // console.log(form.userid.value);
-            // console.log(form.pw.value);
-            // formInfo.userid.value = form.userid.value;
-            // formInfo.submit();
           } else {
             console.log(message);
             alert(message);
             form.reset();
-            // formInfo.reset();
           }
         } catch (err) {
           console.error("회원가입 에러", err);

@@ -11,7 +11,7 @@ router.get("/signup", controller.getSignup);
 router.get("/signin", controller.getSignin);
 
 // // GET '/profile'
-// router.get("/profile", controller.getProfile);
+router.get("/profile", controller.getProfile);
 
 // POST 'signup'
 router.post("/signup", controller.postSignup);
@@ -22,6 +22,9 @@ router.post("/signin", controller.postSignin);
 // GET '/logout'
 router.get("/logout", controller.getLogout);
 
-// // POST '/profile'
-// router.post("/profile", controller.postProfile);
+// PATCH '/patchUser',
+router.patch("/patchUser", controller.patchUser);
+
+// DELETE '/deleteUser',
+router.delete("/deleteUser", controller.deleteUser);
 module.exports = router;
