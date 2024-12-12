@@ -21,7 +21,7 @@ app.get("*", (req, res) => {
 
 // sync()
 sequelize
-  .sync({ force: false })
+  .sync({ force: true })
   .then(() => {
     console.log("db 연결 성공");
     app.listen(PORT, () => {

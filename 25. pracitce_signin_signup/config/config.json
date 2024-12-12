@@ -1,0 +1,9 @@
+{
+  "development": {
+    "username": "sesac",
+    "password": "1111",
+    "database": "practice_signin_signup",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}

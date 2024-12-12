@@ -92,6 +92,7 @@
       // 서버에서 render 할 때 두번째 인자로 보내는 popup 키에 대한 데이터
       // popup이라는 곳에 쿠키 데이터 담아서 보낸 후 확인해보기
       console.log("popup >> ", "<%= popup %>");
+      console.log(typeof "<%= popup %>"); // 항상 string
 
       // TODO: popup 쿠키 값이 ''이라면, 모달 보여주기 (쿠키가 설정되지 않았다면)
       if ("<%= popup %>" === "") {
@@ -100,12 +101,9 @@
       // TODO: 모달 닫기 버튼 클릭 함수 완성
       async function closeModal() {
         const cookie = document.getElementById("cookie");
-        console.log(cookie);
-        console.log();
-        // 1. 체크 박스가 "체크되어 있다면" (오늘 하루 보지 않음을 선택했다면)
-        // POST /setCookie 요청 보내기 (back에서 popup 쿠키 설정하기)
-        // 2. js로 모달 닫기 수행 (위 참고 링크 확인)
         try {
+          // 1. 체크 박스가 "체크되어 있다면" (오늘 하루 보지 않음을 선택했다면)
+          // POST /set-cookie 요청 보내기 (back에서 popup 쿠키 설정하기)
           if (cookie.checked) {
             const result = await axios({
               method: "post",
@@ -113,6 +111,7 @@
             });
             myModal.hide();
           } else {
+            // 2. js로 모달 닫기 수행 (위 참고 링크 확인)
             myModal.hide();
           }
         } catch (err) {

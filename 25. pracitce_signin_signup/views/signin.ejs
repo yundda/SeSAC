@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <%- include('include/include', { title: '로그인 페이지' })%>
+  <body>
+    <h1 id="info">로그인</h1>
+    <!-- <form action="/profile" method="POST" name="formInfo">
+      <input type="hidden" name="userid" /> 
+    </form>-->
+    <form name="form-signin">
+      <label>
+        <span> ID </span>
+        <input
+          type="text"
+          name="userid"
+          placeholder="아이디를 입력하세요"
+          required
+        />
+      </label>
+      <label>
+        <span> Password </span>
+        <input
+          type="password"
+          name="pw"
+          placeholder="비밀번호를 입력하세요"
+          required
+        />
+      </label>
+      <button type="button" onclick="signin()">로그인</button>
+    </form>
+    <br />
+    <hr />
+    <a href="/signup" id="signup">회원가입</a>
+    <a href="/">HOME</a>
+
+    <script>
+      async function signin() {
+        const form = document.forms["form-signin"];
+        // const formInfo = document.forms["formInfo"];
+        const info = document.getElementById("info");
+        const signupLink = document.getElementById("signup");
+        // console.log(formInfo.userid);
+        // console.log(form.userid.value);
+        // console.log(form.pw.value);
+        if (!form.userid.checkValidity()) {
+          alert("아이디를 입력해주세요");
+          return;
+        }
+        if (!form.pw.checkValidity()) {
+          alert("비밀번호를 입력해주세요");
+          return;
+        }
+        try {
+          const signinResult = await axios({
+            method: "post",
+            url: "/signin",
+            data: {
+              userid: form.userid.value,
+              pw: form.pw.value,
+            },
+          });
+          // console.log(signinResult.data);
+          const { isLogin, message, name } = signinResult.data;
+          if (isLogin) {
+            console.log(message);
+            form.innerHTML = "";
+            signupLink.innerHTML = "";
+            // signupLink.textContent = "마이페이지";
+            // signupLink.href = "/profile";
+            info.innerText = `${name}님 환영합니다`;
+            // console.log(formInfo.userid);
+            // console.log(form.userid.value);
+            // console.log(form.pw.value);
+            // formInfo.userid.value = form.userid.value;
+            // formInfo.submit();
+          } else {
+            console.log(message);
+            alert(message);
+            form.reset();
+            // formInfo.reset();
+          }
+        } catch (err) {
+          console.error("회원가입 에러", err);
+        }
+      }
+    </script>
+  </body>
+</html>

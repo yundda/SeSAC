@@ -17,15 +17,15 @@ const cookieConfig = {
 
 app.get("/", (req, res) => {
   // TODO : 쿠키값 가져오기 및 index.ejs에 보내기
-  res.render("index", { popup: req.signedCookies.mycookie });
+  res.render("index", { popup: req.signedCookies.popup });
   console.log(req.signedCookies);
 });
 
 app.post("/set-cookie", (req, res) => {
   // TODO : 쿠키 생성하기
-  res.cookie("mycookie", "cookie", cookieConfig);
+  res.cookie("popup", "hide", cookieConfig);
   console.log(req.signedCookies);
-  // { mycookie: 'cookie' }
+  // { popup: 'hide' }
   res.send("쿠키 생성 성공");
 });
 

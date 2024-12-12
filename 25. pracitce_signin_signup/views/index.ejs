@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <%- include('include/include', { title: '메인 페이지' })%>
+  <body>
+    <h1>HOME</h1>
+    <!-- 세션이 없을 경우 보여주기 -->
+    <% if(!isLogin){ %>
+    <a href="/signup">회원가입</a>
+    <a href="/signin">로그인</a>
+    <% }else{ %>
+    <!-- 세션이 있을 경우 보여주기 -->
+    <!-- <a href="/profile">마이페이지</a> -->
+    <a href="/logout">로그아웃</a>
+    <%}%>
+  </body>
+</html>

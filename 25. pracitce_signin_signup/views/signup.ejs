@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <%- include('include/include', { title: '회원가입 페이지' })%>
+  <body>
+    <h1>회원가입</h1>
+    </form>
+    <form name="form-signup">
+      <label>
+        <span> ID </span>
+        <input
+          type="text"
+          name="userid"
+          placeholder="아이디를 입력하세요"
+          required
+        />
+      </label>
+
+      <label>
+        <span> Password </span>
+        <input
+          type="password"
+          name="pw"
+          placeholder="비밀번호를 입력하세요"
+          title="비밀번호는 영어소문자, 숫자로 구성된 4자 이상의 문자여야 합니다."
+          pattern="^(?=.*[a-z])(?=.*\d)[a-z0-9]{4,}$"
+          required
+        />
+      </label>
+
+      <label>
+        <span> 이름 </span>
+        <input
+          type="text"
+          name="name"
+          placeholder="이름을 입력하세요"
+          required
+        />
+      </label>
+      <button type="button" onclick="signup()">회원가입</button>
+    </form>
+    <br />
+    <hr />
+    <a href="/signin">로그인</a>
+    <a href="/">HOME</a>
+    <script>
+      async function signup() {
+        const form = document.forms["form-signup"];
+        if (!form.userid.checkValidity()) {
+          alert("아이디를 입력해주세요");
+          return false;
+        }
+        if (!form.pw.checkValidity()) {
+          alert(
+            "비밀번호는 영어소문자, 숫자로 구성된 4자 이상의 문자여야 합니다."
+          );
+          return false;
+        }
+        if (!form.name.checkValidity()) {
+          alert("아이디를 입력해주세요");
+          return false;
+        }
+        try {
+          const signupResult = await axios({
+            method: "post",
+            url: "/signup",
+            data: {
+              userid: form.userid.value,
+              pw: form.pw.value,
+              name: form.name.value,
+            },
+          });
+          console.log(signupResult.data);
+          document.location.href = "/signin";
+        } catch (err) {
+          console.error("회원가입 에러", err);
+        }
+      }
+    </script>
+  </body>
+</html>
