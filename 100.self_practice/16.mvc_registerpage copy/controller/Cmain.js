@@ -55,3 +55,11 @@ cocoa//qwer1234//미떼`;
     res.send({ isSuccess: false });
   }
 };
+
+exports.getPractice = (req, res) => {
+  res.render("practice");
+};
+exports.getDate = (req, res) => {
+  console.log(req.params);
+  res.render("date");
+};
