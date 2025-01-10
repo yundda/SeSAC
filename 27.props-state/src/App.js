@@ -18,7 +18,18 @@ import PracticeClassState from "./components/practice/PracticeClassState";
 import PracticeFuncState from "./components/practice/PracticeFuncState";
 import SyntheticEvent from "./components/SyntheticEvent";
 import AnswerMedia from "./components/practice/AnswerMedia";
+import PropsMap from "./components/PropsMap";
+import PropsMap2 from "./components/PropsMap2";
+import { Alphabet, Alphabet2 } from "./components/Alphabet";
+import Email from "./components/practice/Email";
+import MapPractice from "./components/practice/MapPractice";
 function App() {
+  const arr = [
+    { name: "peach", krPrice: 10000, number: 5 },
+    { name: "strawberry", krPrice: 15000, number: 1 },
+    { name: "pear", krPrice: 5000, number: 3 },
+    { name: "apple", krPrice: 20000, number: 15 },
+  ];
   return (
     <div>
       {/* <h2>Props</h2>
@@ -61,8 +72,14 @@ function App() {
       <ChangeImoge />
       <hr />
       <PororoObj /> */}
-      <Media />
-      <AnswerMedia />
+      {/* <Media />
+      <AnswerMedia /> */}
+      {/* <PropsMap arr={arr} />
+      <PropsMap2 arr={arr} /> */}
+      {/* <Alphabet />
+      <Alphabet2 /> */}
+      {/* <Email /> */}
+      <MapPractice />
     </div>
   );
 }
