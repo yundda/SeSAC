@@ -1,12 +1,12 @@
 import { ClassProps, ClassProps2 } from "./components/ClassProps";
 import ClassState from "./components/ClassState";
 import Counter from "./components/Counter";
-import ChangeColor from "./components/ex/ChangeColor";
-import ChangeImoge from "./components/ex/ChangeImoge";
-import HandlerEx from "./components/ex/HandlerEx";
-import Hidden from "./components/ex/Hidden";
-import Media from "./components/ex/Media";
-import PororoObj from "./components/ex/PororoObj";
+import ChangeColor from "./components/practice/ChangeColor";
+import ChangeImoge from "./components/practice/ChangeImoge";
+import HandlerEx from "./components/practice/HandlerEx";
+import Hidden from "./components/practice/Hidden";
+import Media from "./components/practice/Media";
+import PororoObj from "./components/practice/PororoObj";
 import {
   FunctionProps,
   FunctionProps2,
@@ -17,10 +17,11 @@ import FunctionState from "./components/FunctionState";
 import PracticeClassState from "./components/practice/PracticeClassState";
 import PracticeFuncState from "./components/practice/PracticeFuncState";
 import SyntheticEvent from "./components/SyntheticEvent";
+import AnswerMedia from "./components/practice/AnswerMedia";
 function App() {
   return (
     <div>
-      <h2>Props</h2>
+      {/* <h2>Props</h2>
       <h3>클래스형 컴포넌트 props 사용해보기</h3>
       <ClassProps name="루피" color="pink" nickname="공주" />
       <ClassProps2
@@ -59,8 +60,9 @@ function App() {
       <br />
       <ChangeImoge />
       <hr />
-      <PororoObj />
+      <PororoObj /> */}
       <Media />
+      <AnswerMedia />
     </div>
   );
 }
