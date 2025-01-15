@@ -1,11 +1,12 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 export default function MapPractice() {
+  const inputUserRef = useRef();
+  const inputTitleRef = useRef();
   const [user, setUser] = useState("");
   const [title, setTitle] = useState("");
   const [list, setList] = useState([]);
   const [select, setSelect] = useState("user");
-  const [searchResult, setSearchResult] = useState("검색 결과가 없습니다.");
   const [searchKey, setSearchKey] = useState("");
   const [searchList, setSearchList] = useState([]);
   const addList = () => {
@@ -14,6 +15,14 @@ export default function MapPractice() {
       title: title,
       user: user,
     });
+    console.log(inputUserRef.current.value);
+    if (!inputUserRef.current.value) {
+      inputUserRef.current.focus();
+      return;
+    } else if (!inputTitleRef.current.value) {
+      inputTitleRef.current.focus();
+      return;
+    }
     setList(newList);
     setUser("");
     setTitle("");
@@ -51,6 +60,7 @@ export default function MapPractice() {
           type="text"
           placeholder="작성자"
           value={user}
+          ref={inputUserRef}
           onChange={(e) => {
             setUser(e.target.value);
           }}
@@ -61,6 +71,7 @@ export default function MapPractice() {
           type="text"
           placeholder="제목"
           value={title}
+          ref={inputTitleRef}
           onChange={(e) => {
             setTitle(e.target.value);
           }}
@@ -109,14 +120,12 @@ export default function MapPractice() {
         </table>
         <br />
       </div>
-      <div>
+      {searchList.length == 0 ? (
+        <h3>검색 결과가 없습니다</h3>
+      ) : (
         <div>
-          {searchList.length == 0 ? "검색 결과가 없습니다" : "검색 결과"}
-        </div>
-        <table width={"500px"} border={"1px"}>
-          {searchList.length == 0 ? (
-            ""
-          ) : (
+          <h4>검색 결과</h4>
+          <table width={"500px"} border={"1px"}>
             <thead>
               <tr>
                 <th>번호</th>
@@ -124,21 +133,21 @@ export default function MapPractice() {
                 <th>작성자</th>
               </tr>
             </thead>
-          )}
-          <tbody>
-            {searchList?.map((el) => {
-              return (
-                <tr key={el.id}>
-                  <td>{el.id}</td>
-                  <td>{el.title}</td>
-                  <td>{el.user}</td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-        <br />
-      </div>
+            <tbody>
+              {searchList?.map((el) => {
+                return (
+                  <tr key={el.id}>
+                    <td>{el.id}</td>
+                    <td>{el.title}</td>
+                    <td>{el.user}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+          <br />
+        </div>
+      )}
     </div>
   );
 }

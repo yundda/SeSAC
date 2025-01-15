@@ -1,0 +1,20 @@
+.container {
+  border: 1px solid gray;
+  border-radius: 10px;
+  margin-top: 10px;
+  padding-top: 5px;
+  background-color: rgb(222, 205, 239);
+}
+
+.container .id {
+  color: blueviolet;
+  font-weight: bold;
+}
+.container .title {
+  color: gray;
+  font-size: 0.9rem;
+}
+.container .body {
+  font-size: 1rem;
+  font-weight: bold;
+}
